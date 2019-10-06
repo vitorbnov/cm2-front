@@ -9,6 +9,8 @@ import UserBankAccountNew from './components/pages/UserBankAccountNew.jsx'
 import UserEdit from './components/pages/UserEdit.jsx'
 import UserIndex from './components/pages/UserIndex.jsx'
 import UserNew from './components/pages/UserNew.jsx'
+import 'bootstrap/dist/css/bootstrap.css'
+import './App.scss'
 
 class App extends React.Component {
   render () {

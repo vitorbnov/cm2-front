@@ -1,6 +1,7 @@
 import React from 'react'
 import * as cm2TechClient from '../../clients/cm2tech'
 import Page from './_Page'
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
 export default class BankIndex extends React.Component {
   constructor (props) {
@@ -23,9 +24,13 @@ export default class BankIndex extends React.Component {
 
     return (
       <Page title="Banks">
-        { banks.map(({ id, name, number }, index) =>
-          <div key={index}>{number} - {name} ({id})</div>
-        )}
+        <ListGroup>
+          { banks.map(({ name, number }, index) =>
+              <ListGroupItem>
+                {number} - {name}
+              </ListGroupItem>
+          )}
+        </ListGroup>
       </Page>
     )
   }

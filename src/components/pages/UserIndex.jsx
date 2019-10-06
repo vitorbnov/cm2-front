@@ -1,11 +1,11 @@
 import React from 'react'
 import * as cm2TechClient from '../../clients/cm2tech'
 import Page from './_Page'
+import { Table } from 'reactstrap'
 
 class UserIndex extends React.Component {
   constructor (props) {
     super(props)
-
     this.state = {
       page: 1,
       itemsPerPage: 5,
@@ -70,28 +70,39 @@ class UserIndex extends React.Component {
 
     return (
       <Page title="Users">
+        <a href="/users/new">+ New user</a>
+        <Table>
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>CPF</th>
+              <th>email</th>
+              <th>actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            { users.map(({ id, name, cpf, email }, index) =>
+              <tr key={index}>
+                <td>{name}</td>
+                <td>{cpf}</td>
+                <td>{email}</td>
+                <td>
+                  <a href={`/users/${id}/edit`}>edit</a> <a href={`/users/${id}/bank_accounts`}>bank accounts</a>
+                  <button onClick={evt => { evt.preventDefault(); this.tryDeleteUser(index) }}>delete</button>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </Table>
         <div>
-          <a href="/users/new">New user</a>
-          <div><b>name | cpf | email</b></div>
-          { users.map(({ id, name, cpf, email }, index) =>
-            <div key={index}>
-              <span>{name} | {cpf} | {email}</span>
-              <span>
-                <a href={`/users/${id}/edit`}>edit</a> <a href={`/users/${id}/bank_accounts`}>bank accounts</a>
-                <button onClick={evt => { evt.preventDefault(); this.tryDeleteUser(index) }}>delete</button>
-              </span>
-            </div>
-          )}
-          <div>
-            <button onClick={this.goToFirstPage} disabled={isFirstPage}>&lt;&lt;</button>
-            <button onClick={this.goToPreviousPage} disabled={isFirstPage}>&lt;</button>
-            {[-2, -1, 0, 1, 2].map(offset => {
-              if (page + offset < firstPage || page + offset > lastPage) return null
-              return <button key={page + offset} onClick={() => this.goToPage(page + offset)} disabled={offset === 0}>{page + offset}</button>
-            })}
-            <button onClick={this.goToNextPage} disabled={isLastPage}>&gt;</button>
-            <button onClick={this.goToLastPage} disabled={isLastPage}>&gt;&gt;</button>
-          </div>
+          <button onClick={this.goToFirstPage} disabled={isFirstPage}>&lt;&lt;</button>
+          <button onClick={this.goToPreviousPage} disabled={isFirstPage}>&lt;</button>
+          {[-2, -1, 0, 1, 2].map(offset => {
+            if (page + offset < firstPage || page + offset > lastPage) return null
+            return <button key={page + offset} onClick={() => this.goToPage(page + offset)} disabled={offset === 0}>{page + offset}</button>
+          })}
+          <button onClick={this.goToNextPage} disabled={isLastPage}>&gt;</button>
+          <button onClick={this.goToLastPage} disabled={isLastPage}>&gt;&gt;</button>
         </div>
       </Page>
     )

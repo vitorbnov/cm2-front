@@ -1,22 +1,19 @@
-.page {
-  min-height: 100%;
-}
-
 section {
   margin: 0 200px;
 }
 
 .page-title {
-  margin-top: 10px;
-  margin-bottom: 15px;
+  color: #dfdfdf;
   font-size: 36px;
   font-weight: bold;
+  margin-bottom: 15px;
+  margin-top: 10px;
   overflow: visible;
   text-align: center;
 }
 
 .page-content {
-  background-color: #eeeeee;
+  color: #dfdfdf;
+  background-color: #1b1f27;
   padding: 15px;
-  border-radius: 15px;
 }

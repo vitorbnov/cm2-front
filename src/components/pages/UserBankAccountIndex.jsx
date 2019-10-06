@@ -2,6 +2,7 @@ import React from 'react'
 import * as cm2TechClient from '../../clients/cm2tech'
 import Page from './_Page'
 import NotFoundPage from './_errors/NotFoundPage'
+import { Table } from 'reactstrap'
 
 class UserIndex extends React.Component {
   constructor (props) {
@@ -49,17 +50,36 @@ class UserIndex extends React.Component {
 
     return (
       <Page title="User bank accounts">
-        <div>
-          <div><a href={`/users/${userID}/bank_accounts/new`}>New account</a></div>
-          <b>Account name | Account number | Account digit | Account type | Agency | Agency digit</b>
-          { bankAccounts.map(({ id, accountName, accountNumber, accountDigit, accountType, agency, agencyDigit }, index) =>
-            <div key={index}>
-              <span>{accountName} | {accountNumber} | {accountDigit} | {accountType} | {agency} | {agencyDigit} </span>
-              <a href={`/users/${userID}/bank_accounts/${id}/edit`}>edit</a>
-              <button onClick={() => this.tryDeleteBankAccount(index) }>delete</button>
-            </div>
-          )}
-        </div>
+        <a href={`/users/${userID}/bank_accounts/new`}>New account</a>
+        <Table>
+          <thead>
+            <tr>
+              <th>Acc name</th>
+              <th>Acc number</th>
+              <th>Acc digit</th>
+              <th>Acc type</th>
+              <th>Ag</th>
+              <th>Ag digit</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            { bankAccounts.map(({ id, accountName, accountNumber, accountDigit, accountType, agency, agencyDigit }, index) =>
+              <tr key={index}>
+                <td>{accountName}</td>
+                <td>{accountNumber}</td>
+                <td>{accountDigit}</td>
+                <td>{accountType}</td>
+                <td>{agency}</td>
+                <td>{agencyDigit}</td>
+                <td>
+                  <a href={`/users/${userID}/bank_accounts/${id}/edit`}>edit</a>
+                  <button onClick={() => this.tryDeleteBankAccount(index) }>delete</button>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </Table>
       </Page>
     )
   }
