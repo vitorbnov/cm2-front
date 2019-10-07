@@ -3,6 +3,9 @@ import * as cm2TechClient from '../../clients/cm2tech'
 import Page from './_Page'
 import { Table } from 'reactstrap'
 import Pagination from '../ui/Pagination'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faPiggyBank, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import './UserIndex.scss'
 
 class UserIndex extends React.Component {
   constructor (props) {
@@ -66,8 +69,11 @@ class UserIndex extends React.Component {
                 <td>{cpf}</td>
                 <td>{email}</td>
                 <td>
-                  <a href={`/users/${id}/edit`}>edit</a> <a href={`/users/${id}/bank_accounts`}>bank accounts</a>
-                  <button onClick={evt => { evt.preventDefault(); this.tryDeleteUser(index) }}>delete</button>
+                  <a href={`/users/${id}/edit`}><FontAwesomeIcon icon={faEdit} /></a>
+                  <a href={`/users/${id}/bank_accounts`}><FontAwesomeIcon icon={faPiggyBank} /></a>
+                  <button className="link-button" onClick={evt => { evt.preventDefault(); this.tryDeleteUser(index) }}>
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                  </button>
                 </td>
               </tr>
             )}

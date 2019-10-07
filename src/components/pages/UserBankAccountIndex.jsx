@@ -1,8 +1,10 @@
 import React from 'react'
+import { Table } from 'reactstrap'
 import * as cm2TechClient from '../../clients/cm2tech'
 import Page from './_Page'
 import NotFoundPage from './_errors/NotFoundPage'
-import { Table } from 'reactstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 class UserIndex extends React.Component {
   constructor (props) {
@@ -73,8 +75,12 @@ class UserIndex extends React.Component {
                 <td>{agency}</td>
                 <td>{agencyDigit}</td>
                 <td>
-                  <a href={`/users/${userID}/bank_accounts/${id}/edit`}>edit</a>
-                  <button onClick={() => this.tryDeleteBankAccount(index) }>delete</button>
+                  <a href={`/users/${userID}/bank_accounts/${id}/edit`}>
+                    <FontAwesomeIcon icon={faEdit} />
+                  </a>
+                  <button className="link-button" onClick={() => this.tryDeleteBankAccount(index) }>
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                  </button>
                 </td>
               </tr>
             )}
