@@ -1,0 +1,29 @@
+.pagination {
+  .page-item:first-child button.page-link {
+    border-top-left-radius: 0; // !important;
+    border-bottom-left-radius: 0; // !important;
+  }
+
+  .page-item:last-child button.page-link {
+    border-top-right-radius: 0; // !important;
+    border-bottom-right-radius: 0; // !important;
+  }
+
+  .page-link {
+    background-color: #02a3cc;
+    color: white;
+
+
+    &:disabled {
+      background-color: inherit;
+    }
+
+    &:disabled:hover {
+      color: inherit;
+    }
+
+    &:hover {
+      color: #02a3cc;
+    }
+  }
+}

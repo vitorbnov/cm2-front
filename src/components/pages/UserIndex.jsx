@@ -2,6 +2,7 @@ import React from 'react'
 import * as cm2TechClient from '../../clients/cm2tech'
 import Page from './_Page'
 import { Table } from 'reactstrap'
+import Pagination from '../ui/Pagination'
 
 class UserIndex extends React.Component {
   constructor (props) {
@@ -42,31 +43,9 @@ class UserIndex extends React.Component {
     this.loadUsers(pageNumber)
   }
 
-  goToFirstPage = () => {
-    this.goToPage(1)
-  }
-
-  goToPreviousPage = () => {
-    this.goToPage(this.state.page - 1)
-  }
-
-  goToNextPage = () => {
-    this.goToPage(this.state.page + 1)
-  }
-
-  goToLastPage = () => {
-    this.goToPage(Math.floor(this.state.totalItems / this.state.itemsPerPage))
-  }
-
   render () {
     const { page, users, itemsPerPage, totalItems } = this.state
 
-    // Pagination generation
-    const firstPage = 1
-    const lastPage = Math.floor(totalItems / itemsPerPage) + (totalItems % itemsPerPage > 0 ? 1 : 0)
-
-    const isFirstPage = page === firstPage
-    const isLastPage = page === lastPage
 
     return (
       <Page title="Users">
@@ -94,16 +73,12 @@ class UserIndex extends React.Component {
             )}
           </tbody>
         </Table>
-        <div>
-          <button onClick={this.goToFirstPage} disabled={isFirstPage}>&lt;&lt;</button>
-          <button onClick={this.goToPreviousPage} disabled={isFirstPage}>&lt;</button>
-          {[-2, -1, 0, 1, 2].map(offset => {
-            if (page + offset < firstPage || page + offset > lastPage) return null
-            return <button key={page + offset} onClick={() => this.goToPage(page + offset)} disabled={offset === 0}>{page + offset}</button>
-          })}
-          <button onClick={this.goToNextPage} disabled={isLastPage}>&gt;</button>
-          <button onClick={this.goToLastPage} disabled={isLastPage}>&gt;&gt;</button>
-        </div>
+        <Pagination
+          page={page}
+          itemsPerPage={itemsPerPage}
+          totalItems={totalItems}
+          goToPage={this.goToPage}
+        />
       </Page>
     )
   }
