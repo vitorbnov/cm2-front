@@ -52,7 +52,7 @@ class UserIndex extends React.Component {
 
     return (
       <Page title="Users">
-        <a href="/users/new">+ New user</a>
+        <a className="new-entity-link" href="/users/new">+ New user</a>
         <Table>
           <thead>
             <tr>

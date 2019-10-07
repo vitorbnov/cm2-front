@@ -52,7 +52,7 @@ class UserIndex extends React.Component {
 
     return (
       <Page title="User bank accounts">
-        <a href={`/users/${userID}/bank_accounts/new`}>New account</a>
+        <a className="new-entity-link" href={`/users/${userID}/bank_accounts/new`}>+ New bank account</a>
         <Table>
           <thead>
             <tr>
