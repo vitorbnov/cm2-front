@@ -11,7 +11,7 @@
 
   .page-link {
     background-color: #02a3cc;
-    color: white;
+    color: #ffffff;
 
 
     &:disabled {
@@ -19,7 +19,7 @@
     }
 
     &:disabled:hover {
-      color: inherit;
+      color: #ffffff;
     }
 
     &:hover {

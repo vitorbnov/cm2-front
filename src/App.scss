@@ -11,6 +11,27 @@ li {
   list-style-type: none;
 }
 
+input.form-control, select.form-control {
+  background-color: #0e0e0e;
+  border: 0;
+  border-radius: 0;
+  color: #ffffff;
+
+  &:focus {
+    background-color: #0e0e0e;
+    color: #ffffff;
+  }
+
+  &[type="submit"] {
+    background-color: #02a3cc;
+
+    &:disabled {
+      color: #dfdfdf;
+      background-color: #3eacc7;
+    }
+  }
+}
+
 .link-button {
   background-color: inherit;
   border: none;
@@ -18,7 +39,7 @@ li {
 }
 
 .table {
-  color: white;
+  color: #ffffff;
 
   thead, tbody {
     th, td {
