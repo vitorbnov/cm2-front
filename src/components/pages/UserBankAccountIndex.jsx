@@ -5,6 +5,7 @@ import Page from './_Page'
 import NotFoundPage from './_errors/NotFoundPage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { USERS_BANK_ACCOUNTS_NEW, USERS_BANK_ACCOUNTS_EDIT } from '../../routes'
 
 class UserIndex extends React.Component {
   constructor (props) {
@@ -52,7 +53,7 @@ class UserIndex extends React.Component {
 
     return (
       <Page title="User bank accounts">
-        <a className="new-entity-link" href={`/users/${userID}/bank_accounts/new`}>+ New bank account</a>
+        <a className="new-entity-link" href={USERS_BANK_ACCOUNTS_NEW(userID)}>+ New bank account</a>
         <Table>
           <thead>
             <tr>
@@ -75,7 +76,7 @@ class UserIndex extends React.Component {
                 <td>{agency}</td>
                 <td>{agencyDigit}</td>
                 <td>
-                  <a href={`/users/${userID}/bank_accounts/${id}/edit`}>
+                  <a href={USERS_BANK_ACCOUNTS_EDIT(userID, id)}>
                     <FontAwesomeIcon icon={faEdit} />
                   </a>
                   <button className="link-button" onClick={() => this.tryDeleteBankAccount(index) }>

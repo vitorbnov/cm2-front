@@ -6,6 +6,7 @@ import Pagination from '../ui/Pagination'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faPiggyBank, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import './UserIndex.scss'
+import { USERS_NEW, USERS_EDIT, USERS_BANK_ACCOUNTS_INDEX } from '../../routes'
 
 class UserIndex extends React.Component {
   constructor (props) {
@@ -52,7 +53,7 @@ class UserIndex extends React.Component {
 
     return (
       <Page title="Users">
-        <a className="new-entity-link" href="/users/new">+ New user</a>
+        <a className="new-entity-link" href={USERS_NEW()}>+ New user</a>
         <Table>
           <thead>
             <tr>
@@ -69,8 +70,8 @@ class UserIndex extends React.Component {
                 <td>{cpf}</td>
                 <td>{email}</td>
                 <td>
-                  <a href={`/users/${id}/edit`}><FontAwesomeIcon icon={faEdit} /></a>
-                  <a href={`/users/${id}/bank_accounts`}><FontAwesomeIcon icon={faPiggyBank} /></a>
+                  <a href={USERS_EDIT(id)}><FontAwesomeIcon icon={faEdit} /></a>
+                  <a href={USERS_BANK_ACCOUNTS_INDEX(id)}><FontAwesomeIcon icon={faPiggyBank} /></a>
                   <button className="link-button" onClick={evt => { evt.preventDefault(); this.tryDeleteUser(index) }}>
                     <FontAwesomeIcon icon={faTrashAlt} />
                   </button>

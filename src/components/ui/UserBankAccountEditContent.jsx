@@ -3,6 +3,7 @@ import { Form, FormGroup, Label, Input } from 'reactstrap'
 import * as cm2TechClient from '../../clients/cm2tech'
 import accountTypes from '../../consts/account-types'
 import { parseBankID, formatUserID, formatBankID, isDigit, isValidNumber } from '../../helpers'
+import { USERS_BANK_ACCOUNTS_INDEX } from '../../routes'
 
 class UserBankAccountEdit extends React.Component {
   constructor (props) {
@@ -67,7 +68,7 @@ class UserBankAccountEdit extends React.Component {
     const bank = formatBankID(bankID)
 
     cm2TechClient[bankAccountID ? 'updateBankAccount': 'createBankAccount']({ id: bankAccountID, accountName, agency, agencyDigit, accountNumber, accountDigit, accountType, bank, user }).then(result => {
-      this.props.history.push(`/users/${userID}/bank_accounts`)
+      this.props.history.push(USERS_BANK_ACCOUNTS_INDEX(userID))
     }).catch(err => {
       console.log(err)
       alert('An error has occurred')

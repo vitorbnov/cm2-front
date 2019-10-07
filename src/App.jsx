@@ -10,6 +10,7 @@ import UserEdit from './components/pages/UserEdit.jsx'
 import UserIndex from './components/pages/UserIndex.jsx'
 import UserNew from './components/pages/UserNew.jsx'
 import 'bootstrap/dist/css/bootstrap.css'
+import * as r from './routes'
 import './App.scss'
 
 class App extends React.Component {
@@ -18,18 +19,18 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           {/* Homepage */}
-          <Route exact path="/" component={Home} />
+          <Route exact path={r.HOME()} component={Home} />
 
           {/** Banks */}
-          <Route exact path="/banks" component={BankIndex} />
+          <Route exact path={r.BANKS_INDEX()} component={BankIndex} />
 
           {/** Users */}
-          <Route exact path="/users" component={UserIndex} />
-          <Route path="/users/new" component={UserNew} />
-          <Route path="/users/:userID/edit" component={UserEdit} />
-          <Route exact path="/users/:userID/bank_accounts" component={UserBankAccountIndex} />
-          <Route path="/users/:userID/bank_accounts/new" component={UserBankAccountNew} />
-          <Route path="/users/:userID/bank_accounts/:bankAccountID/edit" component={UserBankAccountEdit} />
+          <Route exact path={r.USERS_INDEX()} component={UserIndex} />
+          <Route path={r.USERS_NEW()} component={UserNew} />
+          <Route path={r.USERS_EDIT()} component={UserEdit} />
+          <Route exact path={r.USERS_BANK_ACCOUNTS_INDEX()} component={UserBankAccountIndex} />
+          <Route path={r.USERS_BANK_ACCOUNTS_NEW()} component={UserBankAccountNew} />
+          <Route path={r.USERS_BANK_ACCOUNTS_EDIT()} component={UserBankAccountEdit} />
 
           {/** NOT FOUND */}
           <Route component={NotFoundPage} />

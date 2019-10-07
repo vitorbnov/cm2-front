@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../ui/Header.jsx'
 import './_Page.scss'
+import { BANKS_INDEX, HOME, USERS_INDEX } from '../../routes'
 
 export default class Page extends React.Component {
   constructor(props) {
@@ -8,13 +9,13 @@ export default class Page extends React.Component {
 
     this.menus = [{
       label: 'Home',
-      url: '/'
+      url: HOME()
     }, {
       label: 'Users',
-      url: '/users'
+      url: USERS_INDEX()
     }, {
       label: 'Banks',
-      url: '/banks'
+      url: BANKS_INDEX()
     }]
   }
 

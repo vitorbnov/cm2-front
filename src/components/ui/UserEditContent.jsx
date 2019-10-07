@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, FormGroup, Label, Input } from 'reactstrap'
 import * as cm2TechClient from '../../clients/cm2tech'
+import { USERS_INDEX, USERS_BANK_ACCOUNTS_NEW } from '../../routes'
 
 class UserNew extends React.Component {
   constructor (props) {
@@ -22,18 +23,18 @@ class UserNew extends React.Component {
     this.loadUser(userID)
   }
 
-  loadUser = userId => {
-    cm2TechClient.getUser(userId).then(({ id, name, email, cpf }) => {
+  loadUser = userID => {
+    cm2TechClient.getUser(userID).then(({ id, name, email, cpf }) => {
       this.setState({ id, name, email, cpf })
     })
   }
 
   redirectToUsersListing = () => {
-    this.props.history.push(`/users`)
+    this.props.history.push(USERS_INDEX())
   }
 
-  redirectToNewUserBankAccount = userId => {
-    this.props.history.push(`/users/${userId}/bank_accounts/new`)
+  redirectToNewUserBankAccount = userID => {
+    this.props.history.push(USERS_BANK_ACCOUNTS_NEW(userID))
   }
 
   onChangeName = evt => this.setState({ name: evt.target.value })
