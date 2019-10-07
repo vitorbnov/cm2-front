@@ -63,17 +63,19 @@ class UserNew extends React.Component {
       <Form onSubmit={this.onSubmitUser}>
         <FormGroup>
           <Label for="name">Name</Label>
-          <Input type="text" name="name" id="name" value={name} onChange={this.onChangeName} placeholder="Type name here..." />
+          <Input type="text" name="name" id="name" className="input" value={name} onChange={this.onChangeName} placeholder="Type name here..." />
         </FormGroup>
         <FormGroup>
           <Label for="email">Email</Label>
-          <Input type="email" name="email" id="email" value={email} onChange={this.onChangeEmail} placeholder="Type email here..." />
+          <Input type="email" name="email" id="email" className="input" value={email} onChange={this.onChangeEmail} placeholder="Type email here..." />
         </FormGroup>
         <FormGroup>
           <Label for="cpf">CPF</Label>
-          <Input type="text" name="cpf" id="cpf" value={cpf} onChange={this.onChangeCPF} placeholder="Type cpf here..." />
+          <Input type="text" name="cpf" id="cpf" className="input" value={cpf} onChange={this.onChangeCPF} placeholder="Type cpf here..." />
         </FormGroup>
-        <Input type="submit" value="Submit" disabled={isFormInvalid} />
+        <FormGroup className="submit">
+          <Input type="submit" value="Submit" className="input" disabled={isFormInvalid} />
+        </FormGroup>
       </Form>
     )
   }

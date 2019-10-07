@@ -89,27 +89,27 @@ class UserBankAccountEdit extends React.Component {
       <Form onSubmit={this.onSubmitBankAccount}>
         <FormGroup>
           <Label for="accountName">Account name</Label>
-          <Input type="text" name="accountName" id="accountName" value={accountName} onChange={this.onChangeAccountName} placeholder="Type Account name here..." />
+          <Input type="text" name="accountName" className="input" id="accountName" value={accountName} onChange={this.onChangeAccountName} placeholder="Type Account name here..." />
         </FormGroup>
         <FormGroup>
           <Label for="agency">Agency</Label>
-          <Input type="agency" name="agency" id="agency" value={agency} onChange={this.onChangeAgency} placeholder="Type Agency here..." />
+          <Input type="agency" name="agency" className="input" id="agency" value={agency} onChange={this.onChangeAgency} placeholder="Type Agency here..." />
         </FormGroup>
         <FormGroup>
           <Label for="agencyDigit">Agency digit</Label>
-          <Input type="text" name="agencyDigit" id="agencyDigit" value={agencyDigit} onChange={this.onChangeAgencyDigit} placeholder="Type Agency digit here..." />
+          <Input type="text" name="agencyDigit" className="input" id="agencyDigit" value={agencyDigit} onChange={this.onChangeAgencyDigit} placeholder="Type Agency digit here..." />
         </FormGroup>
         <FormGroup>
           <Label for="accountNumber">Account number</Label>
-          <Input type="text" name="accountNumber" id="accountNumber" value={accountNumber} onChange={this.onChangeAccountNumber} placeholder="Type Account number here..." />
+          <Input type="text" name="accountNumber" className="input" id="accountNumber" value={accountNumber} onChange={this.onChangeAccountNumber} placeholder="Type Account number here..." />
         </FormGroup>
         <FormGroup>
           <Label for="accountDigit">Account digit</Label>
-          <Input type="text" name="accountDigit" id="accountDigit" value={accountDigit} onChange={this.onChangeAccountDigit} placeholder="Type Account digit here..." />
+          <Input type="text" name="accountDigit" className="input" id="accountDigit" value={accountDigit} onChange={this.onChangeAccountDigit} placeholder="Type Account digit here..." />
         </FormGroup>
         <FormGroup>
           <Label for="accountType">Account type</Label>
-          <Input type="select" name="accountType" id="accountType" value={accountType} onChange={this.onChangeAccountType} placeholder="Type Account type here...">
+          <Input type="select" name="accountType" className="input" id="accountType" value={accountType} onChange={this.onChangeAccountType} placeholder="Type Account type here...">
             <option value=""> -- </option>
             { Object.keys(accountTypes).map(type =>
               <option key={type} value={type}>{type}</option>
@@ -118,14 +118,16 @@ class UserBankAccountEdit extends React.Component {
         </FormGroup>
         <FormGroup>
           <Label for="bank">Bank</Label>
-          <Input type="select" name="bank" id="bank" value={bankID} onChange={this.onChangeBank} placeholder="Type bank here...">
+          <Input type="select" name="bank" className="input" id="bank" value={bankID} onChange={this.onChangeBank} placeholder="Type bank here...">
             <option value=""> -- </option>
             { bankOptions.map(({ label, value }) =>
               <option key={value} value={value}>{label}</option>
             )}
           </Input>
         </FormGroup>
-        <Input type="submit" value="Submit" disabled={isFormInvalid} />
+        <FormGroup className="submit">
+          <Input type="submit" value="Submit" className="input" disabled={isFormInvalid} />
+        </FormGroup>
       </Form>
     )
   }

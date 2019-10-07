@@ -11,7 +11,11 @@ li {
   list-style-type: none;
 }
 
-input.form-control, select.form-control {
+.form-group.submit {
+  text-align: center;
+}
+
+.input {
   background-color: #0e0e0e;
   border: 0;
   border-radius: 0;
@@ -24,6 +28,8 @@ input.form-control, select.form-control {
 
   &[type="submit"] {
     background-color: #02a3cc;
+    display: inline-block;
+    width: 200px;
 
     &:disabled {
       color: #dfdfdf;
